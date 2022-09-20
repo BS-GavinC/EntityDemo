@@ -1,17 +1,28 @@
 ﻿using EntityDemo.context;
 using EntityDemo.models;
 
-Role myRole;
+
 
 using (DataContext db = new DataContext())
 {
-    myRole = db.roles.Where(x => x.Name == "Admin").FirstOrDefault();
 
+    Role role = new Role
+    {
+        Id = Guid.NewGuid(),
+        Name = "Admin"
+    };
+
+    db.roles.Add(role);
+
+    db.SaveChanges();
+
+
+   
     User user = new User
     {
         Id = Guid.NewGuid(),
         Email = "eeee@aaaaa.bbe",
-        UserRole = myRole
+        UserRole = role
     };
 
     db.users.Add(user);
