@@ -32,7 +32,7 @@ namespace EntityDemo.context
 
             using (DataContext db = new DataContext())
             {
-                _ = modelBuilder.Entity<User>().HasData(new User
+                modelBuilder.Entity<User>().HasData(new User
                 {
                     Id = Guid.NewGuid(),
                     Email = "pomme@pot.be",
